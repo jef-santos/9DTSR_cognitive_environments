@@ -46,27 +46,27 @@ Desenvolver uma aplicação de validação de identidade utilizando **serviços 
 ## 🚀 Executando o Projeto
 
 ### 1. Clone o repositório
-
-```bash
+```
 git clone https://github.com/jef-santos/9DTSR_cognitive_environments.git
 cd 9DTSR_cognitive_environments
+```
 
 ### 2. Crie um ambiente virtual e instale as dependências
-```bash
+```
 python -m venv .venv
 source .venv/bin/activate  # ou .venv\Scripts\activate no Windows
-
 pip install -r requirements.txt
+```
 
 ### 3. Configure suas credenciais AWS
 Certifique-se de configurar suas credenciais no ambiente local, via aws configure ou variáveis de ambiente.
 
 ### 4. Rode o aplicativo Streamlit
-```bash
+```
 streamlit run app/app.py
+```
 
 ## ☁️ Tecnologias Utilizadas
-
 - **Python 3.10+**
 - **Streamlit** para a interface interativa
 - **AWS Textract** para OCR (leitura de texto de imagens)
