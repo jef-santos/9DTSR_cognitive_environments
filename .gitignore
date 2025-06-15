@@ -12,6 +12,7 @@ venv/
 env/
 ENV/
 .venv_cenv/
+.venv_streamlit
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/

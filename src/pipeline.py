@@ -77,6 +77,13 @@ def extrair_dados_comprovantes(caminho_imagem_comp):
 
     return nome_comprovante, cpf_comprovante
 
+def normalizar_nome(nome):
+    nome = unicodedata.normalize('NFKD', nome).encode('ASCII', 'ignore').decode('utf-8')
+    nome = nome.upper().strip()
+    nome = re.sub(r'\s+', ' ', nome)
+    nome = re.sub(r'[\u200b\r\n]+', '', nome)
+    return nome.upper()
+
 def validador(caminho_imagem_cnh, caminho_imagem_comp, caminho_selfie):
     #Extrair dados da CNH e comprovantes
     nome_cnh, cpf_cnh = extrair_dados_cnh(caminho_imagem_cnh)
@@ -104,8 +111,8 @@ def validador(caminho_imagem_cnh, caminho_imagem_comp, caminho_selfie):
     face_selfie_bytes = buffer_selfie.getvalue()
 
     # Normalizar nomes e verifica se os nomes e CPFs coincidem
-    nome_cnh_normalizado = unicodedata.normalize('NFKD', nome_cnh).encode('ASCII', 'ignore').decode('utf-8')
-    nome_comp_normalizado = unicodedata.normalize('NFKD', nome_comp).encode('ASCII', 'ignore').decode('utf-8')
+    nome_cnh_normalizado = normalizar_nome(nome_cnh)
+    nome_comp_normalizado = normalizar_nome(nome_comp)
     nomes_iguais = nome_cnh_normalizado == nome_comp_normalizado
     cpfs_iguais = cpf_cnh == cpf_comp
 
@@ -124,9 +131,9 @@ def validador(caminho_imagem_cnh, caminho_imagem_comp, caminho_selfie):
 
 
     return {
-        "nome_cnh": nome_cnh,
+        "nome_cnh": nome_cnh_normalizado,
         "cpf_cnh": cpf_cnh,
-        "nome_comprovante": nome_comp,
+        "nome_comprovante": nome_comp_normalizado,
         "cpf_comprovante": cpf_comp,
         "nomes_iguais": nomes_iguais,
         "cpfs_iguais": cpfs_iguais,
