@@ -17,7 +17,7 @@ Desenvolver uma aplicação de validação de identidade utilizando **serviços 
 ---
 
 ## 📦 Estrutura do Repositório
-
+```
 9DTSR_cognitive_environments/
 │
 ├── data
@@ -33,6 +33,7 @@ Desenvolver uma aplicação de validação de identidade utilizando **serviços 
 │
 ├── requirements.txt
 ├── README.md 
+```
 
 ## ☁️ Tecnologias Utilizadas
 
